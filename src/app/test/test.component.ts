@@ -14,7 +14,7 @@ export class TestComponent implements OnInit {
   Hobbies: KeyValuePair[] = [{Name : 'Swimming', Value : 1},{Name : 'Cricket', Value : 2}, {Name : 'Reading books', Value : 3}];
   Nationalities : string [] = ['Indian','NRI']
   Addbackcolor:boolean = true;
-
+  TotalClicks:number =3;
   constructor() {
     this.Person = {Firstname : "Ashwin" , LastName : "Kumar", id : 1 };
 
