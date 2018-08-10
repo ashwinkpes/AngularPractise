@@ -1,0 +1,45 @@
+<p>{{Person | json}}</p>
+
+<form #f="ngForm">
+  <div class="form-group">
+    <label for="FirstName">First Name:</label>
+    <input class="form-control" (keyup)="onKeyup($event, firstName.value, 'FirstName')" type="text" placeholder="Enter first name" name="FirstName"
+      [(ngModel)]="Person.Firstname" #firstName />
+  </div>
+  <div class="form-group">
+    <label for="LastName">Last Name:</label>
+    <input class="form-control" (keyup)="onKeyup($event, lastName.value, 'LastName')" type="text" placeholder="Enter last name" name="LastName" [(ngModel)]="Person.LastName"
+      #lastName />
+  </div>
+  <div class="form-group">
+    <label for="Gender">Gender:</label>
+    <select class="form-control" [(ngModel)]="Person.Gender" name="gender" (change)="onGenderSelect();">
+      <option selected name="Please select" value="Please Select"></option>
+      <option *ngFor = "let gender of Genders" value="{{gender.Value}}">{{gender.Name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="Color">Color:</label>
+    <select class="form-control" [(ngModel)]="Person.Color" name="color">
+      <option selected name="Please select" value="Please Select"></option>
+      <option *ngFor = "let color of FavColors" value="{{color.Value}}">{{color.Name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+   <div *ngFor = "let hobby of Hobbies" class="checkbox">
+     <label for="Hobby{{hobby.Value}}">
+        <input class="form-control" type="checkbox"  id="Hobby{{hobby.Value}}" value="{{hobby.Value}}" 
+        (change)="onHobbyChanged(hobby.Value)" /> {{hobby.Name}} </label>
+   </div>
+  </div>
+  <div class="form-group">
+      <label for="Indian">Nationality:</label>
+      <input id="Nat1" class="form-control radio-inline" type="radio" name="nationality" value="1"
+          [(ngModel)]="Person.Nationality" #Nationality /> Indian
+
+          <input id="Nat1" class="form-control radio-inline" type="radio" name="nationality" value="2"
+          [(ngModel)]="Person.Nationality" #Nationality /> NRI
+    </div>
+ 
+  <button [class.backColor]="Addbackcolor" type="submit">Submit</button>
+</form>
